@@ -12,10 +12,14 @@ app.component('main-component',{
     `
     <div>
         <h1>ブラックジャック</h1>
+
         <pre>{{humanDatas}}</pre>
         <player-component
         :value="computerDatas"
         ></player-component>
+
+        <p> {{message}} </p>
+
         <player-component
         :value="humanDatas"
         ></player-component>
@@ -26,19 +30,29 @@ app.component('main-component',{
             :disabled="cannotPickup"
             @click="pushedMoreCardButton"
             >カードをもらう</button>
-            <button id="fight">勝負!</button>
+
+            <button
+            @click="pushedFightButton"
+            >勝負!</button>
         </div>
-        <button id="reset" class="reset" :disabled="gameEnd">もう一回!</button>
+        <button
+        class="reset"
+        @click="pushedResetButton"
+        :disabled="gameEnd">もう一回!</button>
     </div>
     `,
     data() {
         return {
             moreCardButtonDisabledFlag:false,
-            gameEnd:true,
+            message:'カードがほしい?',
+            //制御
+            cannotRetry:true,
             cannotPickup:false,
+            //オブジェクト生成
             masterDeck:new Deck(),
             computer:new Computer(),
             human:new Player(),
+            //各々のデータ
             humanDatas:{
                 deck:[],
                 sum:0,
@@ -51,7 +65,7 @@ app.component('main-component',{
                 AInMyDeckFlag  :false,
                 burstFlag      :false,
                 bjFlag         :false,
-                nowSetting     :true,
+                nowSetting     :false,
             },
             computerDatas:{
                 deck:[],
@@ -88,31 +102,46 @@ app.component('main-component',{
         humanProces() {
             this.human.sumCard();
             this.human.sumCardAIn();
+
+            this.humanDatas.sum    = this.human.getSum();
+            this.humanDatas.sumAIn = this.human.getSumAIn();
+
             //bjが成立しているか確かめる
             this.human.checkBJ();
             if (this.human.getbjFlag()==true) {
                 // カードをもらうボタンを無効化
-                // $moreCardButton.disabled = true;
-                // print.changeHumanInfo(`ブラックジャック!`);
+                this.cannotPickup = true;
+
+                //ブラックジャックフラグを立てる
+                this.humanDatas.bjFlag = true
             }
-        
             //バーストしているか確かめる
             this.human.checkBurst();
             this.human.checkBurstAIn();
             if (this.human.getburstFlag() == true) {
                 // カードをもらうボタンを無効化
-                // $moreCardButton.disabled = true;
+                this.cannotPickup = true;
+
                 //リセットボタンを押せるようにする
-                // $resetButton.disabled = false;
-                // print.changeHumanInfo(`バーストしました`);
+                this.cannotRetry = true;
+
+                // バーストフラグを立てる
+                this.humanDatas.burstFlag = true
             }
 
-            //表示に関する処理
-            this.humanDatas.sum = this.human.getSum();
         },
+        //ボタン系の処理
         pushedMoreCardButton(){
             this.addCard("H");
             this.humanProces();
+        },
+        pushedFightButton(){
+            // カードをもらうボタンを無効化
+            this.cannotPickup = true;
+
+        },
+        pushedResetButton(){
+            location.reload()
         }
     },
     components: {
@@ -120,6 +149,7 @@ app.component('main-component',{
     },
     mounted() {
         this.masterDeck.shuffle()
+        // this.humanDatas.nowSetting = fasle
     },
     
 }).mount('#app')
