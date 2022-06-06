@@ -150,6 +150,11 @@ app.component('main-component',{
     mounted() {
         this.masterDeck.shuffle()
         // this.humanDatas.nowSetting = fasle
+
+        for (let i = 0; i <2; i++) {
+            addCard("H")
+            addCard("C")
+        }
     },
     
 }).mount('#app')
