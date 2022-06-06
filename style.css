@@ -1,0 +1,111 @@
+body {
+  background-color: #ededed;
+}
+
+h1 {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin: 0.1rem 0;
+}
+
+.sum {
+  font-weight: 900;
+}
+
+.computerSide {
+  background-color: #e5ffb1;
+  margin: 0.5rem 2rem;
+}
+
+.computerSide img {
+  display: block;
+  margin: 0 0.4rem;
+}
+
+.computerSide .sum {
+  font-size: 2rem;
+}
+
+.computerSide .computerCard {
+  padding: 0.3rem 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-style: solid;
+  border-color: black;
+}
+
+.info {
+  font-size: 1.5rem;
+}
+
+.humanSide {
+  background-color: #e5ffb1;
+  margin: 0.5rem 2rem;
+}
+
+.humanSide img {
+  display: block;
+  margin: 0 0.4rem;
+}
+
+.humanSide .sum {
+  font-size: 2rem;
+}
+
+.humanSide .humanCard {
+  padding: 0.3rem 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-style: solid;
+  border-color: black;
+}
+
+.controler {
+  margin: 0.5rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.controler button {
+  border-style: solid;
+  border-color: black;
+  width: 10rem;
+  margin: auto;
+}
+
+.reset {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  width: 10rem;
+  margin: auto;
+}
+/*# sourceMappingURL=style.css.map */

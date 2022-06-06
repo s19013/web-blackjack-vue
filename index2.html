@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+    <link rel='stylesheet' href='./style.css'>
+    <!-- <script src="https://unpkg.com/vue@next"></script> 
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>ブラックジャック</h1>
+    <!-- <player-component
+    v-model="computerDatas"
+    ></player-component> -->
+
+    <pre>
+      {{computerDatas}}
+      {{moreCardButtonDisabledFlag}}
+    </pre>
+
+    <p id="info" class="info">カードをもらいますか</p>
+
+    <!-- <player-component
+    v-model="humanDatas"
+    ></player-component> -->
+
+    <div class="controler">
+      <button id="moreCard">カードをもらう</button>
+      <button id="fight">勝負!</button>
+    </div>
+    <button id="reset" class="reset">もう一回!</button>
+  </div>
+
+
+  <script src="./Card.js"     type="module"></script>
+  <script src="./Deck.js"     type="module"></script>
+  <script src="./Player.js"   type="module"></script>
+  <script src="./Computer.js" type="module"></script>
+  <script src="./Print.js"    type="module"></script>
+  <!-- <script src="./main2.js"    ></script> -->
+  <!-- <script src="./Main.js"     type="module"></script> -->
+  <script src="./player-component.js"></script>
+  <script>
+    const app = Vue.createApp({
+    data() {
+        return {
+            moreCardButtonDisabledFlag:false,
+            humanDatas:{
+                deck:[],
+                sum:0,
+                sumAIn:0,
+                sideName:"あなた",
+                sideClassName:"humanSide",
+                cardClassName:"humanCard",
+
+                //フラグ
+                AInMyDeckFlag  :false,
+                burstFlag      :false,
+                bjFlag         :false,
+                nowSetting     :true,
+            },
+            computerDatas:{
+                deck:[],
+                sum:0,
+                sumAIn:0,
+                sideName:"相手",
+                sideClassName:"computerSide",
+                cardClassName:"computerCard",
+
+                //フラグ
+                AInMyDeckFlag  :false,
+                burstFlag      :false,
+                bjFlag         :false,
+                nowSetting     :true,
+            }
+        }
+    },
+    methods: {
+        // pushedMoreCardButton(){
+        //     addCard("H")
+        //     humanProces()
+        // },
+        // pushedFightButton(){
+        //     computerProcess()
+        //     this.moreCardButtonDisabledFlag=true
+        // },
+        // pushedResetButton(){
+        //     location.reload()
+        // }
+    },
+}).mount('#app')
+  </script>
+
+</body>
+</html>

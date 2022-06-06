@@ -1,0 +1,87 @@
+$textColor:rgb(255, 218, 218);
+@mixin cardAria{
+    padding: 0.3rem 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-style: solid; 
+    border-color: black;
+}
+
+@mixin sideTmp($color){
+    background-color: $color;
+    margin: 0.5rem 2rem;
+    img{
+        display: block; 
+        margin: 0 0.4rem;
+    }
+    .sum{
+        font-size: 2rem;
+    }
+    
+}
+
+
+
+body{
+    background-color:rgb(237, 237, 237);
+}
+h1{
+    margin: 0.5rem;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    margin: 0.1rem 0;
+}
+
+.sum {
+    font-weight: 900;
+}
+
+.computerSide{
+    @include sideTmp(rgb(229, 255, 177));
+    .computerCard{
+        @include cardAria();
+    }
+    
+}
+
+.info{
+    font-size: 1.5rem;
+}
+
+.humanSide{
+    @include sideTmp(rgb(229, 255, 177));
+    .humanCard{
+        @include cardAria();
+    }
+    
+}
+
+.controler{
+    margin: 0.5rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    button{
+        border-style: solid;
+        border-color: black;
+        width: 10rem;
+        margin: auto;
+        
+    }
+}
+
+.reset{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    width: 10rem;
+    margin: auto;
+}
+
